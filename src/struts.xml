@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="user" class="com.xj.action.UserAction">
+		    <result name="login_success">index.jsp</result>
+			<result name="login_false">404_page.jsp</result>
+			<result name="register_success">index.jsp</result>
+			
+		</action>
+		<action name="train_resource" class="com.xj.action.TrainResourceAction" method="upload">
+				    
+			<result name="listRes">/train/listRes.jsp</result>
+			<result name="failure">/train/failure.jsp</result>
+			<result name="down" type="stream">
+				<param name="contentType">application/x-msdownload</param>
+				<param name="contentDisposition">attachment;fileName=${downName}</param>
+				<param name="inputName">downFile</param>
+			</result>
+		</action>
+		<action name="resPage" class="com.xj.action.ResPageAction">
+			<result name="listVideoRes">/train/listVideoRes.jsp</result>
+			<result name="listDocRes">/train/listDocRes.jsp</result>
+			<result name="failure">/train/res_failure.jsp</result>
+		</action>
+		
+		
+	</package>
+	<package name="admin" namespace="/Admin" extends="default">
+		<action name="Resource" class="com.xj.action.ResourceAction">
+			<result name="part_all">part_all.jsp</result>
+			<result name="part_update">part_update.jsp</result>
+		</action>
+		<action name="admin" class="com.xj.action.AdminAction">
+			<result name="index">index.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="listRepair">index.jsp</result>
+		</action>
+		
+
+		
+		<action name="ShenQing" class="com.xj.action.ShenQingAction">
+			<result name="ShenQing_add">ShenQing_add.jsp</result>
+			<result name="ShenQing_add_res">ShenQing_add_res.jsp</result>
+			<result name="ShenQing_all">ShenQing_all.jsp</result>
+			<result name="ShenQing_part_all">ShenQing_part_all.jsp</result>
+			<result name="ShenQing_query_byManId">ShenQing_query_byManId.jsp</result>
+			<result name="ShenQing_query">ShenQing_query.jsp</result>
+			<result name="ShenQing_add_res_0">../tz.jsp</result>
+			
+		</action>
+		
+		
+	</package>
+	<package name="repair" namespace="/" extends="default">
+		
+		<action name="repair" class="com.xj.action.RepairActivity">
+			<result name="listTable">repair_table.jsp</result>
+            <result name="querry_success">management_detail.jsp</result>
+            <result name="del_success">userManagement.jsp</result>
+		</action>
+	</package> 
+	<package name="serviceperson" namespace="/" extends="default">
+		
+		<action name="service" class="com.xj.action.SerPerAction">
+		    <result name="login_success">servicePer.jsp</result>
+			<result name="serlistTable">servicePer.jsp</result>
+			<result name="login_false">404_page.jsp</result>
+			<result name="qd_success">servicePer.jsp</result>
+			<result name="wancheng_success">servicePer.jsp</result>
+			<result name="serlist">servicePerMange.jsp</result>
+			
+         
+		</action>
+	</package> 
+
+</struts>    
